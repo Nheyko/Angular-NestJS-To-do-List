@@ -1,0 +1,15 @@
+input {
+    width: 150px
+}
+
+textarea {
+    width: 100%;
+    resize: none; 
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}

@@ -1,0 +1,63 @@
+<div *ngIf="taskForm">
+    <label
+        for="name"
+        class="ml-1 font-medium text-black">Name : </label>
+    <input
+        id="name"
+        type="text"
+        [formControl]="taskForm.get('name')"
+        required
+        minlength="3"
+        maxlength="10"
+        class="text-gray-500"
+        placeholder="Your name (10 chars)">
+</div>
+<div *ngIf="taskForm.get('name')?.invalid && taskForm.get('name')?.touched" class="error-message">
+    Name must be between 3 and 10 characters.
+</div>
+
+<div *ngIf="taskForm">
+    <label
+        for="description"
+        class="ml-1 font-medium text-black">Description : </label>
+    <textarea
+        #description
+        id="description"
+        type="text"
+        [formControl]="taskForm.get('description')"
+        required
+        minlength="3"
+        maxlength="255"
+        class="pl-1 text-gray-500"
+        (input)="onInput($event)"
+        spellcheck="false"
+        placeholder="Description of the task (255 chars)">
+    </textarea>
+</div>
+<div *ngIf="taskForm.get('description')?.invalid && taskForm.get('description')?.touched" class="error-message">
+    Description must be between 3 and 255 characters.
+</div>
+
+<div *ngIf="taskForm">
+    <label
+        for="status"
+        class="ml-1 font-medium text-black">Status : </label>
+    <select
+        [style.color]="taskForm.get('status').value === '' ? 'gray-500' : 'black'" id="status"
+        [formControl]="taskForm.get('status')"
+        required
+        class="text-gray-500">
+        <option
+            value=""
+            disabled
+            selected>Select status</option>
+        <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+    </select>
+</div>
+
+<div *ngIf="taskForm && !isNewTask">
+    <div>
+        <label class="ml-1 font-medium text-black">ID : </label>
+        <span class="text-gray-500">{{ taskForm.get('id')?.value }}</span>
+    </div>
+</div>

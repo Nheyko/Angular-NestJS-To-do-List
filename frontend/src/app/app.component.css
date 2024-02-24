@@ -1,0 +1,7 @@
+.italic2 {
+    -moz-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(10deg, 0deg);
+    -webkit-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(10deg, 0deg);
+    -o-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(10deg, 0deg);
+    -ms-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(10deg, 0deg);
+    transform: scale(1) rotate(0deg) translate(0px, 0px) skew(10deg, 0deg);
+}

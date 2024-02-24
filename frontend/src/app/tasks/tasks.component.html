@@ -1,0 +1,45 @@
+<div *ngIf="dataLoading; else tasksTemplate">Loading...</div>
+<ng-template #tasksTemplate>
+    <div *ngIf="(tasks$ | async) as tasks; else noTasksTemplate">
+        <div class="flex flex-wrap flex-row pb-10">
+            <div *ngFor="let taskCategory of getTaskStatusValues()" class="card">
+                <div class="top-card">
+                    <h2>{{ taskCategory | titlecase }}</h2>
+                </div>
+                <hr>
+                <div class="bottom-card" style="overflow-y: auto;" #bottomCard>
+                    <section *ngIf="taskStatusMap[taskCategory]">
+                        <div *ngFor="let task of taskStatusMap[taskCategory]" id="task-{{task.id}}" class="pb-5 task">
+                            <app-task-form
+                                [taskName]="task.name"
+                                [taskId]="task.id"
+                                [taskDescription]="task.description"
+                                [taskStatus]="task.status"
+                            >
+                            </app-task-form>
+                        </div>
+                    </section>
+                    <div class="text-center" *ngIf="!taskStatusMap[taskCategory]">No tasks found.</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="top-card">
+                    <h2>New Task</h2>
+                </div>
+                <hr>
+                <div class="bottom-card" style="overflow-y: auto;" #bottomCard>
+                    <section class="pb-5 task">
+                        <app-task-form
+                            [isNewTask]="true"
+                            >
+                        </app-task-form>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<ng-template #noTasksTemplate>
+    <div class="text-gray-500 text-lg">No tasks found.</div>
+</ng-template>

@@ -1,0 +1,19 @@
+.card {
+    @apply flex flex-col bg-gray-100 outline rounded ml-10 mt-10 min-h-96 max-h-96 min-w-80 max-w-80
+}
+
+.top-card {
+    @apply min-h-10 max-h-10 flex items-center justify-center
+}
+
+.bottom-card {
+    @apply flex justify-center pt-5
+}
+
+h2 {
+    @apply text-lg font-bold
+}
+
+hr {
+    @apply border-b border-black
+}

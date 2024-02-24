@@ -1,0 +1,22 @@
+<form *ngIf="!isNewTask" [formGroup]="taskForm" class="task">
+    <app-task-form-fields class="divide-y" [taskForm]="taskForm" [isNewTask]="false"></app-task-form-fields>
+    <div class="flex divide-x">
+        <div class="text-center">
+            <button [ngStyle]="{ 'color': taskForm.invalid || isFormUnchanged() ? 'gray' : 'black' }" type="button"
+                [disabled]="isFormUnchanged() || taskForm.invalid" (click)="update()" class="ml-1">Save</button>
+        </div>
+        <div class="text-center">
+            <button type="button" (click)="delete()" class="ml-1">Delete</button>
+        </div>
+    </div>
+</form>
+
+<form *ngIf="isNewTask" [formGroup]="newTaskForm" class="task" (ngSubmit)="onSubmit()">
+    <app-task-form-fields class="divide-y" [taskForm]="newTaskForm" [isNewTask]="true"></app-task-form-fields>
+    <div>
+        <div class="text-center">
+            <button [ngStyle]="{ 'color': newTaskForm.invalid || isNewFormUnchanged() ? 'gray' : 'black' }" type="submit"
+                [disabled]="isNewFormUnchanged() || newTaskForm.invalid" class="ml-1">Create</button>
+        </div>
+    </div>
+</form>

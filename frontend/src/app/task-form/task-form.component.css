@@ -1,0 +1,7 @@
+.task {
+    @apply w-60 bg-white rounded-lg divide-y outline
+}
+
+button:disabled {
+    cursor: not-allowed;
+  }
